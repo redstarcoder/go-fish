@@ -235,7 +235,7 @@ func (cB *CodeBox) Exe(r byte) bool {
 	case '&':
 		cB.Register()
 	case 'o':
-		print(string(byte(cB.Pop())))
+		fmt.Print(string(byte(cB.Pop())))
 	case 'n':
 		fmt.Printf("%v", cB.Pop())
 	case 'r':
@@ -354,7 +354,7 @@ func (cB *CodeBox) Swim() bool {
 		if r := recover(); r != nil {
 			cB.PrintBox()
 			fmt.Println("Stack:", cB.Stack())
-			println("something smells fishy...")
+			fmt.Println("something smells fishy...")
 			os.Exit(1)
 		}
 	}()
@@ -449,16 +449,16 @@ func (cB *CodeBox) NewStack(n int) {
 
 // PrintBox outputs the codebox to stdout.
 func (cB *CodeBox) PrintBox() {
-	println()
+	fmt.Println()
 	for y, line := range cB.box {
 		for x, r := range line {
 			if x != cB.fX || y != cB.fY {
-				print(" " + string(rune(r)) + " ")
+				fmt.Print(" " + string(rune(r)) + " ")
 			} else {
-				print("*" + string(rune(r)) + "*")
+				fmt.Print("*" + string(rune(r)) + "*")
 			}
 		}
-		println()
+		fmt.Println()
 	}
 }
 
