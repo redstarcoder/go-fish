@@ -453,9 +453,9 @@ func (cB *CodeBox) PrintBox() {
 	for y, line := range cB.box {
 		for x, r := range line {
 			if x != cB.fX || y != cB.fY {
-				fmt.Print(" " + string(rune(r)) + " ")
+				fmt.Print(string(rune(r)))
 			} else {
-				fmt.Print("*" + string(rune(r)) + "*")
+				fmt.Print("\u001b[42m" + string(rune(r)) + "\u001b[0m")
 			}
 		}
 		fmt.Println()
